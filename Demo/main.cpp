@@ -16,7 +16,8 @@ int main()
 	auto e = std::move(a);
 	std::cout << e.ToString() << "\n" << d.ToString() << "\n";
 
-	TemplateArray<int> templateArray(5);
+	TemplateArray<int> templateArray{ 1, 2, 3, 4 };
+	std::cout << templateArray.ToString() << "\n";
 
 	return 0;
 }
