@@ -121,7 +121,7 @@ namespace miit
 		std::wstringstream buffer{};
 		for (auto i = 0; i < array.Size(); ++i)
 		{
-			buffer << array[i] << " ";
+			buffer << array[i] << L" ";
 		}
 
 		return buffer.str();
