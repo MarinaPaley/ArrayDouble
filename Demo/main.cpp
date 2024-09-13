@@ -1,5 +1,6 @@
 #include <iostream>
 #include"..\Domain\Array.h"
+#include "..\TemplateArray\TemplateArray.h"
 
 using namespace miit;
 int main()
@@ -14,5 +15,8 @@ int main()
 	auto d = c;
 	auto e = std::move(a);
 	std::cout << e.ToString() << "\n" << d.ToString() << "\n";
+
+	TemplateArray<int> templateArray(5);
+
 	return 0;
 }
