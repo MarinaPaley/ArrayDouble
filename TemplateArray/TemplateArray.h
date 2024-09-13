@@ -2,8 +2,17 @@
 
 #include <sstream>
 
+
 namespace miit
 {
+	template<typename T> class TemplateArray;
+
+	template<typename T>
+	bool operator==(const TemplateArray<T>& lha, const TemplateArray<T>& rha);
+
+	template<typename T>
+	std::wstring ToString(const TemplateArray<T>& array);
+
 	template<typename T>
 	class TemplateArray final
 	{
@@ -44,7 +53,7 @@ namespace miit
 		}
 
 		this->size = static_cast<size_t>(size);
-		this->data = new int[this->size];
+		this->data = new T[this->size];
 	}
 
 	template<typename T>
@@ -126,6 +135,36 @@ namespace miit
 		for (auto i = 0; i < this->size; ++i)
 		{
 			buffer << this->data[i] << " ";
+		}
+
+		return buffer.str();
+	}
+
+	template<typename T>
+	bool operator==(const TemplateArray<T>& lha, const TemplateArray<T>& rha)
+	{
+		if (lha.Size() != rha.Size())
+		{
+			return false;
+		}
+		for (auto i = 0; i < lha.Size(); ++i)
+		{
+			if (lha[i] != rha[i])
+			{
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	template<typename T>
+	std::wstring ToString(const TemplateArray<T>& array)
+	{
+		std::wstringstream buffer{};
+		for (auto i = 0; i < array.Size(); ++i)
+		{
+			buffer << array[i] << L" ";
 		}
 
 		return buffer.str();
